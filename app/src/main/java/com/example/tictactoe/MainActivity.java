@@ -8,10 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    private Button startGame;
+    private Button twoPlayer,androidPlay,startGame;
     private EditText player1;
     private EditText player2;
     String s1,s2;
+int i=0;
 
 
 
@@ -19,25 +20,60 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startGame=(Button)findViewById(R.id.button);
+      //  twoPlayer=(Button)findViewById(R.id.button);
+        //androidPlay=(Button)findViewById(R.id.computer);
+        startGame=(Button)findViewById(R.id.startActivity);
         player1=(EditText)findViewById(R.id.player1);
         player2=(EditText)findViewById(R.id.player2);
-        if(player1.getText().length()==0)
-            player1.setText("player1");
-        if(player2.getText().length()==0);
-        player2.setText("player2");
+        //player1.setVisibility(View.INVISIBLE);
+       // player2.setVisibility(View.INVISIBLE);
 
-        startGame.setOnClickListener(new View.OnClickListener() {
+       /* twoPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-         s1=player1.getText().toString();
-         s2=player2.getText().toString();
-            Intent intent=new Intent(MainActivity.this,GameActivity.class);
-           intent.putExtra("p1",s1);
-           intent.putExtra("p2",s2);
-           startActivity(intent);
+                player1.setVisibility(View.VISIBLE);
+                player2.setVisibility(View.VISIBLE);
+                if(player1.getText().length()==0)
+                    player1.setText("Player1");
+                if(player2.getText().length()==0)
+                    player2.setText("Player2");
+                i=2;
+                androidPlay.setEnabled(false);
+
 
             }
         });
+        androidPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                player1.setVisibility(View.VISIBLE);
+                player2.setVisibility(View.VISIBLE);
+                player2.setText("Android");
+                player2.setEnabled(false);
+                if(player1.getText().length()==0)
+                    player1.setText("Player1");
+                i=1;
+                twoPlayer.setEnabled(false);
+
+            }
+        });*/
+        if(player1.getText().length()==0)
+            player1.setText("Player1");
+        if(player2.getText().length()==0)
+            player2.setText("Player2");
+
+       startGame.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+
+               s1=player1.getText().toString();
+               s2=player2.getText().toString();
+               Intent intent=new Intent(MainActivity.this,GameActivity.class);
+               intent.putExtra("p1",s1);
+               intent.putExtra("p2",s2);
+               startActivity(intent);
+           }
+       });
     }
+
 }
