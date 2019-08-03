@@ -20,7 +20,7 @@ public class bestTime extends AppCompatActivity {
         String string = getIntent().getExtras().getString("winName", "none");
         SharedPreferences sp=getSharedPreferences("sharedPref",MODE_PRIVATE);
 
-        int j = Integer.parseInt(sp.getString("value","360000"));
+        int j = Integer.parseInt(sp.getString("value","360000000"));
         if (j > intValue)
         {
             String value=Integer.toString(intValue);
